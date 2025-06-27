@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Trips</title>
+</head>
+<body>
+   <h1>Your Trips</h1>
+   <ul>
+    <% trips.forEach(trip => { %>
+     <li>
+        <a href="/users/<%= user._id %>/trips/<%= trip._id %>"><%= trip.name %></a>
+    </li>
+    <% }) %>
+   </ul>
+   <a href="/users/<%= user._id %>/trips/new">
+    <div>+</div>
+   </a>     
+</body>
+</html>
