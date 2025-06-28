@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Details</title>
+</head>
+<body>
+    <h1>Edit your trip details</h1>
+    <form action="/trips/<%= trip._id %>?_method=PUT" method="POST">
+        <label for="startDate">Start Date: </label>
+        <input type="date" id="startDate" name="startDate" value="<%= trip.startDate.toDateString() %>" />
+        <label for="endDate">End Date: </label>
+        <input type="date" id="endDate" name="endDate" value="<%= trip.endDate.toDateString() %>"/>
+    <button type="submit">Update</button>
+    </form>
+</body>
+</html>

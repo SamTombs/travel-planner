@@ -9,8 +9,12 @@ const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('express-session');
 
+
 const authController = require('./controllers/auth.js');
 const usersController = require('./controllers/users.js');
+const tripsController = require('./controllers/trips.js');
+
+app.set('view engine', 'ejs');
 
 const port = process.env.PORT ? process.env.PORT : '3000';
 
@@ -20,7 +24,7 @@ mongoose.connection.on('connected', () => {
     console.log(`Connected to MongoDB ${mongoose.connection.name}`)
 });
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 
@@ -40,16 +44,8 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get('/trips', (req, res) => {
-    if (req.sessionID.user) {
-        res.redirect(`users/${req.session.user._id}/trips`)
-    } else {
-        res.redirect('/auth/sign-in');
-    }
-});
-
 app.use('/auth', authController);
-
+app.use('/trips', isSignedIn, tripsController);
 app.use('/users', usersController);
 
 app.listen(port, () => {

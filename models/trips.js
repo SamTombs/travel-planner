@@ -11,13 +11,14 @@ const tripSchema = mongoose.Schema({
         type: Date,
         required: true,
     },
+    countries: {
+        type: String,
+        required: true,
+    },
     users: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-    }],
-    destinations: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Destination',
+        required: true,
     }],
 });
 

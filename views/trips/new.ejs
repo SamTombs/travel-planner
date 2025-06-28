@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Trip</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Create Trip</h1>
+    <form action="/trips/new" method="POST">
+        <label for="startDate">Start Date: </label>
+        <input type="date" id="startDate" name="startDate" />
+        <label for="endDate">End Date: </label>
+        <input type="date" id="endDate" name="endDate" />
+        <label for="countries">Choose your destination: </label>
+        <select name="countries" required>
+        <% countries.forEach(c => { %>
+        <option value="<%= c.name.common %>"><%= c.name.common %></option>
+        <% }); %>
+        </select> 
+    <br><button type="submit">Create Trip</button>
+    </form> <br>
+    <a href="/destinations/show">
+    <div>Check out destination</div>
+    </a>
+</body>
+</html>

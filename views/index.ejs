@@ -6,14 +6,20 @@
     <title>TravelMate</title>
 </head>
 <body>
+    <% if (user) { %>
+     <h1>TravelMate</h1>
+     <p>Plan, organize and explore your perfect trip—all in one travel planner app.</p>
+     <p>
+     <a href="/trips">Your trips</a> <br>
+     <a href="/auth/sign-out">Sign Out</a>
+    </p>
+    <% } else { %>
    <h1>TravelMate</h1>
    <p>Plan, organize and explore your perfect trip—all in one travel planner app.</p>
       <p>
       <a href="/auth/sign-up">Sign up</a> <br> 
       <a href="/auth/sign-in">Sign in</a>
     </p>
-    <% if (user) { %>
-        <p><a href="/trips/index.ejs">Your trips</a></p>
     <% } %>
 </body>
 </html>
