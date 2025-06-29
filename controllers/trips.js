@@ -100,3 +100,9 @@ router.delete('/:id', async (req, res) => {
 });
 
 module.exports = router;
+
+
+// create the TODO edit page. 
+// create the itinerary page.
+// style
+// stretch goals  

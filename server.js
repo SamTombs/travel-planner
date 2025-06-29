@@ -13,6 +13,7 @@ const session = require('express-session');
 const authController = require('./controllers/auth.js');
 const usersController = require('./controllers/users.js');
 const tripsController = require('./controllers/trips.js');
+const destinationsController = require('./controllers/destinations.js');
 
 app.set('view engine', 'ejs');
 
@@ -47,6 +48,7 @@ app.get('/', (req, res) => {
 app.use('/auth', authController);
 app.use('/trips', isSignedIn, tripsController);
 app.use('/users', usersController);
+app.use('/destinations', destinationsController)
 
 app.listen(port, () => {
     console.log(`The express app is ready on port ${port}`);

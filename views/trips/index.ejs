@@ -12,6 +12,8 @@
     <% trips.forEach(trip => { %>
      <li><a href="/trips/<%= trip._id %>">
         <%= trip.countries %> <br></a>
+        <a href="/destinations/<%= trip._id %>">Destination information
+        </a>
     </li> <br>
     <% }) %>
    </ul>
