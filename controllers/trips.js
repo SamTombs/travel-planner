@@ -78,7 +78,7 @@ router.post('/new', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
       const tripId = req.params.id;
-      const selectedTrip = await Trip.findOne({ _id: tripId, users: [req.session.user._id]})
+      const selectedTrip = await Trip.deleteOne({ _id: tripId, users: req.session.user._id})
       selectedTrip.set(req.body)
       await selectedTrip.save()
       res.redirect(`/trips/${tripId}`);
@@ -87,5 +87,16 @@ router.put('/:id', async (req, res) => {
         console.log('Couldnt update trip', error.message);
     }
 })
+
+router.delete('/:id', async (req, res) => {
+    try {
+    const tripId = req.params.id;
+    const selectedTrip = await Trip.findOne({ _id: tripId, users: req.session.user._id})
+    await selectedTrip.deleteOne(); 
+    res.redirect('/trips');  
+    } catch (error) {
+        console.log('Error', error.message);
+    }
+});
 
 module.exports = router;

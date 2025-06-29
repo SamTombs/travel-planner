@@ -4,20 +4,23 @@
     <title><%= selectedTrip.countries %></title>
 </head>
 <body>
+    <%- include('../partials/_navbar.ejs') %>
     <h1><%= selectedTrip.countries %></h1>
     <p>
     <strong>From:</strong> <%= new Date(selectedTrip.startDate).toDateString() %><br>
     <strong>To:</strong> <%= new Date(selectedTrip.endDate).toDateString() %><br>
     </p>
+    <a href="/itinerary">
+    <div><strong>Itinerary</strong></div>
+    </a>   
     <h3>Todos:</h3>
     <%- include('../partials/_list.ejs', { todos }) %>
     <a href="/todos/edit">
     <div><strong>Update todos</strong></div>
     </a> 
     <a href="/trips/<%= selectedTrip._id %>/edit">Update Trip</a>
-
-    <a href="/itinerary">
-    <div><strong>Itinerary</strong></div>
-   </a>     
+    <form action="/trips/<%= selectedTrip._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete Trip</button>
+    </form>   
 </body>
 </html>

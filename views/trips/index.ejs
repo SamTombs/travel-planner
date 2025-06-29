@@ -11,9 +11,7 @@
    <ul>
     <% trips.forEach(trip => { %>
      <li><a href="/trips/<%= trip._id %>">
-        <strong>Destination: </strong> <%= trip.countries %> <br></a>
-        <strong>From:</strong> <%= trip.startDate.toDateString() %><br>
-        <strong>To:</strong> <%= trip.endDate.toDateString() %><br>
+        <%= trip.countries %> <br></a>
     </li> <br>
     <% }) %>
    </ul>
