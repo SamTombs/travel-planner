@@ -5,20 +5,56 @@
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1><%= selectedTrip.countries %></h1>
-    <p>
-    <strong>From:</strong> <%= new Date(selectedTrip.startDate).toDateString() %><br>
-    <strong>To:</strong> <%= new Date(selectedTrip.endDate).toDateString() %><br>
-    </p>
+    <% countries.forEach(country => { %>
+    <section>
+        <img src="<%= country.flags?.svg %>" alt="flag" width="150" height="100"/>
+        <h2><%= country.name.common %></h2>
+         <p><strong>Capital:</strong> <%= country.capital?.[0] || 'N/A' %></p>
+        <p><strong>Languages:</strong>
+             <%= country.languages ? Object.values(country.languages).join(', ') : 'N/A' %>
+        </p>
+        <p><strong>Currency:</strong>
+            <% if (country.currencies) {
+                const keys = Object.keys(country.currencies);
+                keys.forEach(code => { %>
+                <%= country.currencies[code].name %> (<%= code %>)
+            <%  });
+                } else { %>
+                N/A
+            <% } %>
+        </p>
+        <p><strong>Country Code:</strong> <%= country.cca2 %></p>
+    </section>
+    <% }) %>
+    <section>
+        <p> <strong>From: </strong> 
+        <%= new Date(selectedTrip.startDate).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+            }) %> <br> <strong>To: </strong>
+        <%= new Date(selectedTrip.endDate).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        }) %>
+        </p>
+        <h4>Passenger Details :</h4>
+        <div>
+        <% if (selectedTrip.passengers) { %>
+            <% selectedTrip.passengers.forEach(p => { %>
+            <strong><%= p.name %></strong><br> Passport No: <%= p.passportNumber %><br>
+        <% }) %><br>
+        <% } else { %>
+        <p>N/A</p>
+        <% } %>
+        </div>
+    </section>
+    <h3>Todos:</h3>
     <a href="/itinerary">
     <div><strong>Itinerary</strong></div>
     </a>   
-    <h3>Todos:</h3>
-    <%- include('../partials/_list.ejs', { todos }) %>
-    <a href="/todos/edit">
-    <div><strong>Update todos</strong></div>
-    </a> 
-    <a href="/trips/<%= selectedTrip._id %>/edit">Update Trip</a>
+    <a href="/trips/<%= selectedTrip._id %>/edit">Update Trip</a> <br>
     <form action="/trips/<%= selectedTrip._id %>?_method=DELETE" method="POST">
         <button type="submit">Delete Trip</button>
     </form>   

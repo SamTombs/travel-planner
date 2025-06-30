@@ -15,6 +15,32 @@ const tripSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    passengers: [
+    {
+        name: {
+        type: String,
+        required: true
+        },
+        passportNumber: {
+        type: String,
+        required: true
+        }
+    }
+    ],
+    todos: [
+    { 
+        name: {
+        type: Date,
+        min: Date.now,
+        required: true,
+        },
+        isComplete: {
+        type: Boolean ,
+        required: true,
+        },
+    
+    }
+    ],
     users: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',

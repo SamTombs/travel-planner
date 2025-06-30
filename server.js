@@ -8,12 +8,13 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 
 
 const authController = require('./controllers/auth.js');
 const usersController = require('./controllers/users.js');
 const tripsController = require('./controllers/trips.js');
-const destinationsController = require('./controllers/destinations.js');
+
 
 app.set('view engine', 'ejs');
 
@@ -33,9 +34,23 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGODB_URI,
+      collectionName: "sessions",
+      ttl: 24 * 60 * 60,
+      autoRemove: "native", 
+    }),
+    cookie: {
+      secure: process.env.NODE_ENV === "production",
+      httpOnly: true, 
+      maxAge: 24 * 60 * 60 * 1000, 
+      sameSite: "lax", 
+    },
+    name: "project2.sid", 
   })
 );
+
 
 app.use(passUserToView);
 
@@ -48,7 +63,7 @@ app.get('/', (req, res) => {
 app.use('/auth', authController);
 app.use('/trips', isSignedIn, tripsController);
 app.use('/users', usersController);
-app.use('/destinations', destinationsController)
+
 
 app.listen(port, () => {
     console.log(`The express app is ready on port ${port}`);
