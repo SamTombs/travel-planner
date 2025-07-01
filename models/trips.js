@@ -15,18 +15,11 @@ const tripSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    passengers: [
-    {
-        name: {
+    passengers:  {
         type: String,
-        required: true
-        },
-        passportNumber: {
-        type: String,
-        required: true
-        }
-    }
-    ],
+        required: true,
+    },
+    
     todos: [
     { 
         name: {
@@ -38,7 +31,6 @@ const tripSchema = mongoose.Schema({
         type: Boolean ,
         required: true,
         },
-    
     }
     ],
     users: [{

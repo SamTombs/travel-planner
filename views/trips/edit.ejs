@@ -9,46 +9,8 @@
   <%- include('../partials/_navbar.ejs') %>
   <h1>Edit your trip details</h1>
 
-  <form action="/trips/<%= trip._id %>?_method=PUT" method="POST">
-    <label for="startDate">Start Date: </label>
-    <input
-      type="date"
-      id="startDate"
-      name="startDate"
-      value="<%= trip.startDate.toDateString() %>"
-    />
-    <label for="endDate">End Date: </label>
-    <input
-      type="date"
-      id="endDate"
-      name="endDate"
-      value="<%= trip.endDate.toDateString() %>"
-    />
     <h3>Passenger Details</h3>
-    <% const passengerSlots = [0, 1, 2]; %>
-    <% const passengers = trip.passengers || []; %>
 
-    <% passengerSlots.forEach(index => { 
-         const p = passengers[index] || {}; %>
-      <div>
-        <label for="passenger-name-<%= index %>">Name:</label>
-        <input
-          type="text"
-          id="passenger-name-<%= index %>"
-          name="passengers[<%= index %>][name]"
-          value="<%= p.name || '' %>"
-          placeholder="Name"
-        />
-        <label for="passport-number-<%= index %>">Passport Number:</label>
-        <input
-          type="text"
-          id="passport-number-<%= index %>"
-          name="passengers[<%= index %>][passportNumber]"
-          value="<%= p.passportNumber || '' %>"
-          placeholder="Passport Number"
-        />
-      </div>
-    <% }) %>
     <button type="submit">Update</button>
   </form>
 </body>

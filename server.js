@@ -60,6 +60,9 @@ app.get('/', (req, res) => {
     });
 });
 
+
+
+
 app.use('/auth', authController);
 app.use('/trips', isSignedIn, tripsController);
 app.use('/users', usersController);
