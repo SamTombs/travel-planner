@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create Trip</title>
-</head>
-<body>
+    <script defer src="/todos.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+  </head>
+  <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Create Trip</h1>
     <form action="/trips/new" method="POST">
-        <label for="startDate">Start Date: </label>
-        <input type="date" id="startDate" name="startDate" />
-        <label for="endDate">End Date: </label>
-        <input type="date" id="endDate" name="endDate" />
-        <h3>Passenger Details</h3>
-        <label for="passengers"></label>
-        <textarea id="passengers" name="passengers" rows="5" cols="30"></textarea><br>
-        <label for="countries">Select Destination: </label>
-        <select name="countries" required> 
-            <% countries.forEach(country => { %>
-            return <option><%= country.name %></option>
+      <label for="startDate">Start Date: </label>
+      <input type="date" id="startDate" name="startDate" />
+      <label for="endDate">End Date: </label>
+      <input type="date" id="endDate" name="endDate" />
+      <h3>Passenger Details</h3>
+      <label for="passengers"></label>
+      <textarea id="passengers" name="passengers" rows="5" cols="30"></textarea
+      ><br />
+      <label for="countries">Select Destination: </label>
+      <select name="countries" required>
+        <% destinations.forEach(country => { %> return
+        <option><%= country.name %></option>
         <% }) %>
-        </select> 
-    <br><button type="submit">Create Trip</button>
-    </form> <br>
-</body>
-
+      </select>
+      <button type="button" id="addTodoButton">Add to do</button>
+      <div id="todos"></div>
+      <br /><button type="submit">Create Trip</button>
+    </form>
+    <br />
+  </body>
 </html>

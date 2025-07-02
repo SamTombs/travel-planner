@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TravelMate</title>
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    />
+  </head>
+  <body>
     <% if (user) { %>
-     <h1>TravelMate</h1>
-     <p>Plan, organize and explore your perfect trip—all in one travel planner app.</p>
-     <p>
-     <a href="/trips">Your trips</a> <br>
-     <a href="/auth/sign-out">Sign Out</a>
+    <h1>TravelMate</h1>
+    <p>
+      Plan, organize and explore your perfect trip—all in one travel planner
+      app.
+    </p>
+    <p>
+      <a href="/trips">Your trips</a> <br />
+      <a href="/auth/sign-out">Sign Out</a>
     </p>
     <% } else { %>
-   <h1>TravelMate</h1>
-   <p>Plan, organize and explore your perfect trip—all in one travel planner app.</p>
-      <p>
-      <a href="/auth/sign-up">Sign up</a> <br> 
+    <h1>TravelMate</h1>
+    <p>
+      Plan, organize and explore your perfect trip—all in one travel planner
+      app.
+    </p>
+    <p>
+      <a href="/auth/sign-up">Sign up</a> <br />
       <a href="/auth/sign-in">Sign in</a>
     </p>
     <% } %>
-</body>
+  </body>
 </html>

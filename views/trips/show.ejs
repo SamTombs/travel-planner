@@ -1,26 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title> </title>
-</head>
-<body>
+  <head>
+    <title><%= selectedTrip.countries %></title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    />
+    <script defer src="/todos.js"></script>
+  </head>
+
+  <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1> <%= selectedTrip.countries %> </h1>
+    <h1><%= selectedTrip.countries %></h1>
     <% countryDetails.forEach(country => { %>
     <section>
-    
-    <p>Capital: <%= country.capital %></p>
-    <p>Population: <%= country.population %></p>
-    <p>Currency: <%= country.currencies  %></p>
+      <img src="<%= country.flag.medium  %>" alt="flag" />
+      <p>Capital: <%= country.capital %></p>
+      <p>Population: <%= country.population %></p>
     </section>
-    <% }) %>
+    <% }) %> <%= selectedTrip.startDate.toDateString() %> <br />
+    <%= selectedTrip.endDate.toDateString() %>
+
+    <h3>Passengers</h3>
+    <p><%= selectedTrip.passengers %></p>
     <h3>Todos:</h3>
+    <% selectedTrip.todos.forEach(todo => { %>
+    <li>Task: <%= todo.name %>, Complete : <%= todo.isComplete %></li>
+
+    <% }) %>
+    <div id="todos"></div>
     <a href="/itinerary">
-    <div><strong>Itinerary</strong></div>
-    </a>   
-    <a href="/trips/edit">Update Trip</a> <br>
+      <div><strong>Itinerary</strong></div>
+    </a>
+    <br />
     <form action="/trips/<%= selectedTrip._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete Trip</button>
-    </form>   
-</body>
+      <button type="submit">Delete Trip</button>
+    </form>
+    <a href="/trips/<%= selectedTrip._id %>/edit">Update Trip</a>
+  </body>
 </html>

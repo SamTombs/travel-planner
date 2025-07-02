@@ -1,6 +1,16 @@
 
 const mongoose = require('mongoose');
 
+const todoSchema = new mongoose.Schema({
+        name: {
+        type: String,
+        required: true,
+        },
+        isComplete: {
+        type: Boolean ,
+        required: true,
+        },
+})
 const tripSchema = mongoose.Schema({
     startDate: {
         type: Date,
@@ -20,19 +30,8 @@ const tripSchema = mongoose.Schema({
         required: true,
     },
     
-    todos: [
-    { 
-        name: {
-        type: Date,
-        min: Date.now,
-        required: true,
-        },
-        isComplete: {
-        type: Boolean ,
-        required: true,
-        },
-    }
-    ],
+    todos: [todoSchema],
+
     users: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',

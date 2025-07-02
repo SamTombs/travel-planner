@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Trips</title>
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    />
+  </head>
+  <body class="has-background-success-light">
     <%- include('../partials/_navbar.ejs') %>
-   <ul>
-    <% trips.forEach(trip => { %>
-     <li><a href="/trips/<%= trip._id %>">
-        <%= trip.countries %> <br></a>
-    </li> <br>
-    <% }) %>
-   </ul>
-   <a href="/trips/new">
-    <div>+</div>
-   </a>     
-</body>
+    <ul class="has-text-centered">
+      <% trips.forEach(trip => { %>
+      <li class="box">
+        <a href="/trips/<%= trip._id %>"> <%= trip.countries %> <br /></a>
+        <br />
+        <a href="/itinerary">
+          <div><strong>Itinerary</strong></div>
+        </a>
+      </li>
+
+      <% }) %>
+    </ul>
+    <a href="/trips/new">
+      <div>+</div>
+    </a>
+  </body>
 </html>
