@@ -11,7 +11,7 @@
   </head>
   <body class="has-background-success-light">
     <%- include('../partials/_navbar.ejs') %>
-    <ul class="has-text-centered">
+    <ul class="has-text-centered" class="skeleton-block">
       <% trips.forEach(trip => { %>
       <li class="box">
         <a href="/trips/<%= trip._id %>"> <%= trip.countries %> <br /></a>

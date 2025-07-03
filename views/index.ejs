@@ -10,26 +10,61 @@
     />
   </head>
   <body>
+    <div class="container">
+      <p style="background-image: url('https://i.imgur.com/dZTEc2z.jpeg');"></p>
+    </div> 
     <% if (user) { %>
-    <h1>TravelMate</h1>
-    <p>
-      Plan, organize and explore your perfect trip—all in one travel planner
-      app.
-    </p>
-    <p>
-      <a href="/trips">Your trips</a> <br />
-      <a href="/auth/sign-out">Sign Out</a>
-    </p>
-    <% } else { %>
-    <h1>TravelMate</h1>
-    <p>
-      Plan, organize and explore your perfect trip—all in one travel planner
-      app.
-    </p>
-    <p>
-      <a href="/auth/sign-up">Sign up</a> <br />
-      <a href="/auth/sign-in">Sign in</a>
-    </p>
+      <section class="section is-medium" >      
+        <div class="container">
+          <div class="columns is-centered"> 
+            <div class="mgt-small has-text-success">
+                <p class="title">TravelMate</p>
+                <p class="subtitle">
+                  Plan, organize and explore your perfect trip—all in one travel planner
+                  app.
+                </p>
+            </div>
+          </div>
+      </section> 
+       <section class="section is-small">
+        <div class="container">
+          <div class="columns is-centered"> 
+              <div class="level">
+                <p class="level-item has-text-centered" >
+                  <a class="button is-medium is-rounded"  href="/trips">Your trips</a> <br />
+                   <a class="button is-medium is-rounded" href="/auth/sign-out">Sign Out</a>
+                </p>
+              </div>  
+          </div> 
+      </section>     
+    <% } else { %>  
+      <section class="section is-medium" >      
+        <div class="container">
+            <div class="columns is-left"> 
+              <div class="mgt-small " >
+                  <p class="title has-text-success">TravelMate</p>
+                  <p class="subtitle has-text-success">
+                  Plan, organize and explore your perfect trip—all in one travel planner
+                  app.
+                  </p>
+                  <a class="button is-medium is-rounded"  href="/auth/sign-up">Sign up</a> <br>
+                  <a class="button is-medium is-rounded" href="/auth/sign-in">Sign in</a>
+              </div>
+            </div> 
+        </div>        
+      </section>        
     <% } %>
   </body>
+  <style>
+body { 
+  background-color: #f6f7e3;
+  background-image: url('https://i.imgur.com/dZTEc2z.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+}
+  </style>
 </html>
