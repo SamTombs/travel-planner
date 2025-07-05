@@ -9,22 +9,21 @@
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
     />
   </head>
-  <body class="has-background-success-light">
+  <body style="background-color: beige;">
     <%- include('../partials/_navbar.ejs') %>
-    <ul class="has-text-centered" class="skeleton-block">
-      <% trips.forEach(trip => { %>
-      <li class="box">
-        <a href="/trips/<%= trip._id %>"> <%= trip.countries %> <br /></a>
-        <br />
-        <a href="/itinerary">
-          <div><strong>Itinerary</strong></div>
-        </a>
-      </li>
-
-      <% }) %>
-    </ul>
+    <div class="columns is-vcentered is-centered" style="height: 100vh;">
+        <div class="column has-text-centered is-one-third">
+            <ul style="background-color: beige; text-decoration: none;" class=" box has-text-centered nav-link">
+            <% trips.forEach(trip => { %>
+            <li style="background-color: rgb(183, 207, 158);" class="box is-size-4 pt-6">
+            <a href="/trips/<%= trip._id %>"> <%= trip.countries %> <br /></a>
+            <br />
+            </li>
+            <% }) %>
+            </ul>
     <a href="/trips/new">
-      <div>+</div>
+      <div style="color: rgb(183, 207, 158);" class="title is-1">+
+      </div>
     </a>
   </body>
 </html>

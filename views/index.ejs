@@ -10,48 +10,79 @@
     />
   </head>
   <body>
-    <div class="container">
-      <p style="background-image: url('https://i.imgur.com/dZTEc2z.jpeg');"></p>
-    </div> 
     <% if (user) { %>
-      <section class="section is-medium" >      
-        <div class="container">
-          <div class="columns is-centered"> 
-            <div class="mgt-small has-text-success">
-                <p class="title">TravelMate</p>
-                <p class="subtitle">
-                  Plan, organize and explore your perfect trip—all in one travel planner
-                  app.
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navMenu" class="navbar-menu">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-dark" href="/trips">Your trips</a>
+          <a class="button is-success" href="/auth/sign-out">Sign Out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+     <section class="section is-medium" >
+      <div class="container is-fluid">      
+        <div class=" mgb-6">
+          <div class="columns is-bottom-center"> 
+              <div class="pl-6 mgb-6" >
+                <p class=" is-size-1 is-family-primary has-text-primary-dark has-text-weight-medium">TravelMate</p>
+                <p class=" is-size-4 is-family-primary has-text-primary-dark has-text-weight-medium" >
+                Plan, organize and explore your perfect trip—all in one travel planner
+                app.
                 </p>
-            </div>
-          </div>
-      </section> 
-       <section class="section is-small">
-        <div class="container">
-          <div class="columns is-centered"> 
-              <div class="level">
-                <p class="level-item has-text-centered" >
-                  <a class="button is-medium is-rounded"  href="/trips">Your trips</a> <br />
-                   <a class="button is-medium is-rounded" href="/auth/sign-out">Sign Out</a>
-                </p>
-              </div>  
-          </div> 
-      </section>     
-    <% } else { %>  
-      <section class="section is-medium" >      
-        <div class="container">
-            <div class="columns is-left"> 
-              <div class="mgt-small " >
-                  <p class="title has-text-success">TravelMate</p>
-                  <p class="subtitle has-text-success">
-                  Plan, organize and explore your perfect trip—all in one travel planner
-                  app.
-                  </p>
-                  <a class="button is-medium is-rounded"  href="/auth/sign-up">Sign up</a> <br>
-                  <a class="button is-medium is-rounded" href="/auth/sign-in">Sign in</a>
               </div>
             </div> 
-        </div>        
+          </div>  
+        </div>  
+      </div>      
+      </section>   
+    <% } else { %>  
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navMenu" class="navbar-menu">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-dark" href="/auth/sign-up">Sign Up</a>
+          <a class="button is-success" href="/auth/sign-in">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+    <section class="section is-medium" >
+      <div class="container is-fluid">      
+        <div class=" mgb-6">
+          <div class="columns is-bottom-center"> 
+              <div class="pl-6 mgb-6" >
+                <p class=" is-size-1 is-family-primary has-text-primary-dark has-text-weight-medium">TravelMate</p>
+                <p class=" is-size-4 is-family-primary has-text-primary-dark has-text-weight-medium" >
+                Plan, organize and explore your perfect trip—all in one travel planner
+                app.
+                </p>
+              </div>
+            </div> 
+          </div>  
+        </div>  
+      </div>      
       </section>        
     <% } %>
   </body>
@@ -61,8 +92,7 @@ body {
   background-image: url('https://i.imgur.com/dZTEc2z.jpeg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
-  background-attachment: fixed;
+  background-size: cover;
   height: 100vh;
   width: 100%;
 }
