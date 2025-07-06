@@ -9,33 +9,33 @@
   </head>
     <body style="background-color: beige;">
     <%- include('../partials/_navbar.ejs') %>
-    <div class="columns is-vcentered is-centered" style="height: 100vh;">
+    <div class="columns is-vcentered is-centered" style="height: 90vh;">
         <div class="column has-text-centered is-half">
-            <h1 class="is-size-3 has-text-success-dark pb-2">Create new trip </h1>
-            <form style="background-color: rgb(183, 207, 158);" class="box is-centered" action="/trips/new" method="POST">
-                <h3 class="is-size-5 has-text-success-dark has-text-left pl-3">Start Date</h3>
+            <h1 class="is-size-3 has-text-primary-dark pb-2">Create new trip </h1>
+            <form class="box is-centered has-background-primary-dark" action="/trips/new" method="POST">
+                <h3 class="is-size-5 has-text-white has-text-left pl-3">Start Date</h3>
                 <div class="field column is-full">
                     <label for="startDate"></label>
                     <div class="control">
                         <input class="input is-rounded has-background-white has-text-black" type="date" name="startDate" required/><br>
                     </div>
                 </div>
-                <h3 class="is-size-5 has-text-success-dark has-text-left pl-3">End Date</h3>
+                <h3 class="is-size-5 has-text-white has-text-left pl-3">End Date</h3>
                 <div class="field column is-full">
                     <label for="endDate"></label>
                     <div class="control">
                         <input class="input is-rounded has-background-white has-text-black" type="date" name="endDate" required/><br>
                     </div>
                 </div>
-                <h3 class="is-size-5 has-text-success-dark has-text-left pl-3">Passenger Details</h3>
+                <h3 class="is-size-5 has-text-white has-text-left pl-3">Passenger Details</h3>
                 <div class="field column is-full">
                     <label for="passengers"></label>
                     <div class="control">
                         <textarea class="textarea is-small has-background-white has-text-black" name="passengers" required></textarea><br>
                     </div>
                 </div>
-                <h3 class="is-size-5 has-text-success-dark block">Destination</h3>
-                <div class="select is-success is-small pyb-3">
+                <h3 class="is-size-5 has-text-white block">Destination</h3>
+                <div class="select is-success is-normal pyb-3">
                     <label for="countries"></label>
                     <select name="countries" required>
                     <% destinations.forEach(country => { %> return
@@ -43,11 +43,11 @@
                     <% }) %>
                     </select>
                 </div> <br>
-                <div class="block">
+                <div class="block pt-3">
                   <div id="todos"></div>
-                  <button class="is-size-5 has-text-success-dark" type="button" id="addTodoButton">Add to do</button>
+                  <button class="is-size-5 has-text-white" type="button" id="addTodoButton">Add Todo</button>
                 </div>
-                <button class="button is-success" type="submit">Add Trip</button>
+                <button class="button is-success is-outlined" type="submit">Add Trip</button>
             </form>
         </div>
     </div>

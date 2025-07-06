@@ -9,21 +9,31 @@
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
     />
   </head>
-  <body style="background-color: beige;">
+  <body style="height: 90vh;">
     <%- include('../partials/_navbar.ejs') %>
-    <div class="columns is-vcentered is-centered" style="height: 100vh;">
-        <div class="column has-text-centered is-one-third">
-            <ul style="background-color: beige; text-decoration: none;" class=" box has-text-centered nav-link">
+    <div class="columns is-vcentered is-centered">
+        <div class="column has-text-centered is-one-third pt-6">
+            <ul style="background-color: rgb(240, 245, 220);" class=" box has-text-centered nav-link">
             <% trips.forEach(trip => { %>
-            <li style="background-color: rgb(183, 207, 158);" class="box is-size-4 pt-6">
-            <a href="/trips/<%= trip._id %>"> <%= trip.countries %> <br /></a>
-            <br />
+            <li class="box is-size-4 pt-6 has-background-primary-dark">
+              <a href="/trips/<%= trip._id %>"> <%= trip.countries %> <br /></a>
+              <br />
             </li>
             <% }) %>
             </ul>
     <a href="/trips/new">
-      <div style="color: rgb(183, 207, 158);" class="title is-1">+
+      <div style="color: rgb(158, 189, 207);" class="title is-1">+
       </div>
     </a>
   </body>
+    <style>
+body { 
+  background-image: url('https://i.imgur.com/shIFfER.png');
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+  height: 80vh;
+  width: 100%;
+}
+  </style>
 </html>

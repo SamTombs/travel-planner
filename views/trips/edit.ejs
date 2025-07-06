@@ -12,25 +12,25 @@
   </head>
     <body style="background-color: beige;">
     <%- include('../partials/_navbar.ejs') %>
-    <div class="columns is-vcentered is-centered" style="height: 100vh;">
+    <div class="columns is-vcentered is-centered" style="height: 90vh;">
         <div class="column has-text-centered is-half">
             <h1 class="is-size-3 has-text-success-dark pb-2">Edit Trip </h1>
-            <form style="background-color: rgb(183, 207, 158);" class="box is-centered" action="/trips/<%= selectedTrip._id %>?_method=PUT" method="POST">
-                <h3 class="is-size-5 has-text-success-dark has-text-left pl-3">Start Date</h3>
+            <form class="box is-centered has-background-primary-dark" action="/trips/<%= selectedTrip._id %>?_method=PUT" method="POST">
+                <h3 class="is-size-5 has-text-white has-text-left pl-3">Start Date</h3>
                 <div class="field column is-full">
                     <label for="startDate"></label>
                     <div class="control">
                         <input class="input is-rounded has-background-white has-text-black" type="date" name="startDate" required/><br>
                     </div>
                 </div>
-                <h3 class="is-size-5 has-text-success-dark has-text-left pl-3">End Date</h3>
+                <h3 class="is-size-5 has-text-white has-text-left pl-3">End Date</h3>
                 <div class="field column is-full">
                     <label for="endDate"></label>
                     <div class="control">
                         <input class="input is-rounded has-background-white has-text-black" type="date" name="endDate" required/><br>
                     </div>
                 </div>
-                <h3 class="is-size-5 has-text-success-dark has-text-left pl-3">Passenger Details</h3>
+                <h3 class="is-size-5 has-text-white has-text-left pl-3">Passenger Details</h3>
                 <div class="field column is-full">
                     <label for="passengers"></label>
                     <div class="control">
@@ -39,7 +39,7 @@
                 </div> <br>
                 <div class="block">
                   <div id="todos" value="<%= selectedTrip.todos %>"></div>
-                  <button class="is-size-5 has-text-success-dark" type="button" id="addTodoButton">Add to do</button>
+                  <button class="is-size-5 has-text-white pt-3" type="button" id="addTodoButton">Add to do</button>
                 </div>
                 <button class="button is-success" type="submit">Update</button>
             </form>

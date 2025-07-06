@@ -8,13 +8,13 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
     />
- 
 </head>
-<body style="background-color: beige;">>
-    <div class="columns is-vcentered is-centered" style="height: 100vh;">
+<body style="background-color: beige;">
+    <%- include('../partials/_navbar.ejs') %>
+    <div class="columns is-vcentered is-centered" style="height: 90vh;">
         <div class="column has-text-centered is-half">
             <h1 class="is-size-3 has-text-success-dark pb-6">Sign In</h1>
-            <form style="background-color: rgb(183, 207, 158);" class="box is-centered" action="/auth/sign-in" method="POST">
+            <form class="box is-centered has-background-primary-dark" action="/auth/sign-in" method="POST">
                 <div class="field column is-full">
                     <label for="username"></label>
                     <div class="control">
@@ -27,7 +27,7 @@
                         <input class="input is-rounded has-background-white has-text-black" type="password" name="password" id="password" value="Password" required/> <br>
                     </div>
                 </div>        
-                <button class="button is-success" type="submit">Sign In</button>
+                <button class="button is-success is-outlined" type="submit">Sign In</button>
             </form>
             <i class="fas fa-utensils fa-3x"></i>
         </div>

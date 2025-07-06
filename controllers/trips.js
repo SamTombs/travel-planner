@@ -122,23 +122,29 @@ router.post("/new", async (req, res) => {
   }
 });
 
+// PUT route for updating a trip by its ID
 router.put("/:id", async (req, res) => {
+  
+  // Helper function to transform the raw request body into a structured format
   const transformReqBody = (body) => {
     const todos = [];
 
+    // Loop through each key in the body to extract todo items
     for (const key in body) {
-      const match = key.match(/^todos(\d+)$/);
+      const match = key.match(/^todos(\d+)$/); // Match keys like "todos0", "todos1", etc.
       if (match) {
         const index = match[1];
-        const todoText = body[`todos${index}`];
-        const isComplete = body[`isComplete${index}`] === "on";
+        const todoText = body[`todos${index}`]; // Get the text of the todo
+        const isComplete = body[`isComplete${index}`] === "on"; // Checkbox returns "on" if checked
 
-        todos.push({ name: todoText, isComplete });
+        todos.push({ name: todoText, isComplete }); // Push each todo item to the list
       }
     }
 
+    // Extract the other non-todo fields from the form
     const { startDate, endDate, passengers, countries } = body;
 
+    // Return the structured object
     return {
       startDate,
       endDate,
@@ -148,25 +154,87 @@ router.put("/:id", async (req, res) => {
     };
   };
 
+  // Transform the incoming form data
   const requestBody = transformReqBody(req.body);
+
   try {
-    const tripId = req.params.id;
+    const tripId = req.params.id; // Extract the trip ID from the route parameter
+
+    // Find and update the trip document if the current user is part of it
     const updatedTrip = await Trip.findOneAndUpdate(
-      { _id: tripId, users: { $in: req.session.user._id } },
+      { _id: tripId, users: { $in: req.session.user._id } }, // Ensure user has access
       {
         startDate: requestBody.startDate,
         endDate: requestBody.endDate,
         passengers: requestBody.passengers,
         todos: requestBody.todos,
       },
-      { new: true }
+      { new: true } // Return the updated document
     );
-    res.redirect(`/trips/${tripId}`);
-    console.log("Trip updated", updatedTrip);
+
+    res.redirect(`/trips/${tripId}`); // Redirect to the updated trip's page
+    console.log("Trip updated", updatedTrip); // Log the updated trip for debugging
   } catch (error) {
-    console.log("Couldnt update trip", error.message);
+    console.log("Couldnt update trip", error.message); // Log any error encountered
   }
 });
+// PUT route for updating a trip by its ID
+router.put("/:id", async (req, res) => {
+  
+  // Helper function to transform the raw request body into a structured format
+  const transformReqBody = (body) => {
+    const todos = [];
+
+    // Loop through each key in the body to extract todo items
+    for (const key in body) {
+      const match = key.match(/^todos(\d+)$/); // Match keys like "todos0", "todos1", etc.
+      if (match) {
+        const index = match[1];
+        const todoText = body[`todos${index}`]; // Get the text of the todo
+        const isComplete = body[`isComplete${index}`] === "on"; // Checkbox returns "on" if checked
+
+        todos.push({ name: todoText, isComplete }); // Push each todo item to the list
+      }
+    }
+
+    // Extract the other non-todo fields from the form
+    const { startDate, endDate, passengers, countries } = body;
+
+    // Return the structured object
+    return {
+      startDate,
+      endDate,
+      passengers,
+      countries,
+      todos,
+    };
+  };
+
+  // Transform the incoming form data
+  const requestBody = transformReqBody(req.body);
+
+  try {
+    const tripId = req.params.id; // Extract the trip ID from the route parameter
+
+    // Find and update the trip document if the current user is part of it
+    const updatedTrip = await Trip.findOneAndUpdate(
+      { _id: tripId, users: { $in: req.session.user._id } }, // Ensure user has access
+      {
+        startDate: requestBody.startDate,
+        endDate: requestBody.endDate,
+        passengers: requestBody.passengers,
+        todos: requestBody.todos,
+      },
+      { new: true } // Return the updated document
+    );
+
+    res.redirect(`/trips/${tripId}`); // Redirect to the updated trip's page
+    console.log("Trip updated", updatedTrip); // Log the updated trip for debugging
+  } catch (error) {
+    console.log("Couldnt update trip", error.message); // Log any error encountered
+  }
+});
+
 
 router.delete("/:id", async (req, res) => {
   try {
@@ -185,18 +253,6 @@ router.delete("/:id", async (req, res) => {
 
 module.exports = router;
 
-// Wednesday Support session to ask:
 
-// 1. Multiple lines on TODO on new.
-// 2. Itinerary place rendered from index.ejs
-
-// create the itinerary page.(seperate page)
-// For Itinerary I can put it on the trips controller as /:id/itinerary/edit
-
-//Thursday
-// style with bulma
-
-// Tuesday - Project presentation day
 // READ.ME
-// stretch goals (TODO LIST ADD LINE WITH BUTTON)
 // go through checklist
