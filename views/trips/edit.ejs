@@ -16,13 +16,13 @@
       <div class="column has-text-centered is-half">
         <h1 class="is-size-3 has-text-success-dark pb-2">Edit Trip </h1>
         <form class="box is-centered has-background-primary-dark" action="/trips/<%= selectedTrip._id %>?_method=PUT" method="POST">
-          <h3 class="is-size-5 has-text-white has-text-left pl-3">Start Date</h3>
+          <h3 class="is-size-5 has-text-white has-text-left pl-3">Start Date : <%= selectedTrip.startDate.toDateString()%> </h3>
           <div class="field column is-full">
             <div class="control">
               <input class="input is-rounded has-background-white has-text-black" type="date" name="startDate" required/>
             </div>
           </div>
-          <h3 class="is-size-5 has-text-white has-text-left pl-3">End Date</h3>
+          <h3 class="is-size-5 has-text-white has-text-left pl-3">End Date: <%= selectedTrip.endDate.toDateString()%></h3>
           <div class="field column is-full">
             <div class="control">
               <input class="input is-rounded has-background-white has-text-black" type="date" name="endDate" required/>
@@ -31,7 +31,7 @@
           <h3 class="is-size-5 has-text-white has-text-left pl-3">Passenger Details</h3>
           <div class="field column is-full">
             <div class="control">
-              <textarea class="textarea is-small has-background-white has-text-black" name="passengers" required></textarea>
+              <textarea class="textarea is-small has-background-white has-text-black" name="passengers"  required><%= selectedTrip.passengers %></textarea>
             </div>
           </div>
           <div class="block">
