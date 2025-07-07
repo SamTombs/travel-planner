@@ -1,50 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Create Trip</title>
-        <script defer src="/todos.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-        </head>
-    <body style="background-color: beige;">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Trip</title>
+    <script defer src="/todos.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    />
+  </head>
+  <body style="background-color: beige">
     <%- include('../partials/_navbar.ejs') %>
-        <div class="columns is-vcentered is-centered" style="height: 100vh;">
-            <div class="column has-text-centered is-half">
-                <form class="box is-centered has-background-primary-dark" action="/trips/new" method="POST">
-                    <h3 class="is-size-5 has-text-white has-text-left pl-3">Start Date</h3>
-                    <div class="field column is-full">
-                        <div class="control">
-                            <input class="input is-rounded has-background-white has-text-black" type="date" name="startDate" required/><br>
-                        </div>
-                    </div>
-                    <h3 class="is-size-5 has-text-white has-text-left pl-3">End Date</h3>
-                    <div class="field column is-full">
-                        <div class="control">
-                            <input class="input is-rounded has-background-white has-text-black" type="date" name="endDate" required/><br>
-                        </div>
-                    </div>
-                    <h3 class="is-size-5 has-text-white has-text-left pl-3">Passenger Details</h3>
-                    <div class="field column is-full">
-                        <div class="control">
-                            <textarea class="textarea is-small has-background-white has-text-black" name="passengers" required></textarea><br>
-                        </div>
-                    </div>
-                    <h3 class="is-size-5 has-text-white block">Destination</h3>
-                    <div class="select is-success is-normal">
-                        <select name="countries" required>
-                        <% destinations.forEach(country => { %>
-                        <option><%= country.name %></option>
-                        <% }) %>
-                        </select>
-                    </div> <br>
-                    <div class="block pt-3">
-                    <div id="todos"></div>
-                    <button class="is-size-5 has-text-white" type="button" id="addTodoButton">Add Todo</button>
-                    </div>
-                    <button class="button is-success is-outlined" type="submit">Add Trip</button>
-                </form>
+    <div class="columns is-vcentered is-centered" style="height: 100vh">
+      <div class="column has-text-centered is-half">
+        <form
+          class="box is-centered has-background-primary-dark"
+          action="/trips/new"
+          method="POST"
+        >
+          <h3 class="is-size-5 has-text-white has-text-left pl-3">
+            Start Date
+          </h3>
+          <div class="field column is-full">
+            <div class="control">
+              <input
+                class="input is-rounded has-background-white has-text-black"
+                type="date"
+                name="startDate"
+                required
+              /><br />
             </div>
-        </div>
-    </body>
+          </div>
+          <h3 class="is-size-5 has-text-white has-text-left pl-3">End Date</h3>
+          <div class="field column is-full">
+            <div class="control">
+              <input
+                class="input is-rounded has-background-white has-text-black"
+                type="date"
+                name="endDate"
+                required
+              /><br />
+            </div>
+          </div>
+          <h3 class="is-size-5 has-text-white has-text-left pl-3">
+            Passenger Details
+          </h3>
+          <div class="field column is-full">
+            <div class="control">
+              <textarea
+                class="textarea is-small has-background-white has-text-black"
+                name="passengers"
+                required
+              ></textarea
+              ><br />
+            </div>
+          </div>
+          <h3 class="is-size-5 has-text-white block">Destination</h3>
+          <div class="select is-success is-normal">
+            <select name="countries" required>
+              <% destinations.forEach(country => { %>
+              <option><%= country.name %></option>
+              <% }) %>
+            </select>
+          </div>
+          <br />
+          <div class="block pt-3">
+            <div id="todos"></div>
+            <button
+              class="is-size-5 has-text-white"
+              type="button"
+              id="addTodoButton"
+            >
+              Add Todo
+            </button>
+          </div>
+          <button class="button is-success is-outlined" type="submit">
+            Add Trip
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>

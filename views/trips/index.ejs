@@ -9,8 +9,8 @@
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
     />
     <style>
-      body { 
-        background-image: url('https://i.imgur.com/shIFfER.png');
+      body {
+        background-image: url("https://i.imgur.com/shIFfER.png");
         background-repeat: no-repeat;
         background-position: right;
         background-size: cover;
@@ -23,17 +23,19 @@
     <%- include('../partials/_navbar.ejs') %>
     <div class="columns is-vcentered is-centered">
       <div class="column has-text-centered is-one-third pt-6">
-        <ul style="background-color: rgb(240, 245, 220);" class=" box has-text-centered nav-link">
-        <% trips.forEach(trip => { %>
+        <ul
+          style="background-color: rgb(240, 245, 220)"
+          class="box has-text-centered nav-link"
+        >
+          <% trips.forEach(trip => { %>
           <li class="box is-size-4 pt-6 has-background-primary-dark">
             <a href="/trips/<%= trip._id %>"> <%= trip.countries %> <br /></a>
             <br />
-            </li>
+          </li>
           <% }) %>
         </ul>
         <a href="/trips/new">
-        <div class="title is-1 has-text-primary-dark">+
-        </div>
+          <div class="title is-1 has-text-primary-dark">+</div>
         </a>
       </div>
     </div>

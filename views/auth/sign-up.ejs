@@ -1,42 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
-    />    
-</head>
-<body style="background-color: beige;">
+    />
+  </head>
+  <body style="background-color: beige">
     <%- include('../partials/_navbar.ejs') %>
-    <div class="columns is-vcentered is-centered" style="height: 90vh;">
-        <div class="column has-text-centered is-half">
-            <h1 class="is-size-3 has-text-success-dark pb-6">Create new account</h1>
-            <form class="box is-centered has-background-primary-dark" action="/auth/sign-up" method="POST">
-                <div class="field column is-full">
-                    <label for="username"></label>
-                    <div class="control">
-                        <input class="input is-rounded has-background-white has-text-black" type="text" name="username" id="username" value="Username" required/><br>
-                    </div>
-                </div>
-                <div class="field column is-full">
-                    <label for="password"></label>
-                    <div class="control">
-                        <input class="input is-rounded has-background-white has-text-black" type="text" name="password" id="password" value="Password" required/><br>
-                    </div>
-                </div>
-                <div class="field column is-full">
-                    <label for="password"></label>
-                    <div class="control">
-                        <input class="input is-rounded has-background-white has-text-black" type="text" name="password" id="password" value="Confirm Password" required/><br>
-                    </div>
-                </div>                              
-                <button class="button is-success is-outlined" type="submit">Confirm</button>
-            </form>
-            <i class="fas fa-utensils fa-3x"></i>
-        </div>
+    <div class="columns is-vcentered is-centered" style="height: 90vh">
+      <div class="column has-text-centered is-half">
+        <h1 class="is-size-3 has-text-success-dark pb-6">Create new account</h1>
+        <form
+          class="box is-centered has-background-primary-dark"
+          action="/auth/sign-up"
+          method="POST"
+        >
+          <div class="field column is-full">
+            <label for="username"></label>
+            <div class="control">
+              <input
+                class="input is-rounded has-background-white has-text-black"
+                type="text"
+                name="username"
+                id="username"
+                value="Username"
+                required
+              /><br />
+            </div>
+          </div>
+          <div class="field column is-full">
+            <label for="password"></label>
+            <div class="control">
+              <input
+                class="input is-rounded has-background-white has-text-black"
+                type="text"
+                name="password"
+                id="password"
+                value="Password"
+                required
+              /><br />
+            </div>
+          </div>
+          <div class="field column is-full">
+            <label for="password"></label>
+            <div class="control">
+              <input
+                class="input is-rounded has-background-white has-text-black"
+                type="text"
+                name="password"
+                id="password"
+                value="Confirm Password"
+                required
+              /><br />
+            </div>
+          </div>
+          <button class="button is-success is-outlined" type="submit">
+            Confirm
+          </button>
+        </form>
+        <i class="fas fa-utensils fa-3x"></i>
+      </div>
     </div>
-</body>
+  </body>
 </html>

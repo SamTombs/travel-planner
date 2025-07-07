@@ -6,66 +6,78 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
     />
-    <script defer src="/todos.js">
-    </script>
+    <script defer src="/todos.js"></script>
     <style>
-    body { 
-      background-image: url('https://i.imgur.com/5ELSSnX.png');
-      background-repeat: no-repeat;
-      background-position: right;
-      background-size: cover;
-      height: 100vh;
-      width: 100%;
-    }
+      body {
+        background-image: url("https://i.imgur.com/5ELSSnX.png");
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: cover;
+        height: 100vh;
+        width: 100%;
+      }
     </style>
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
     <section class="section is-small">
       <% countryDetails.forEach(country => { %>
-        <div class="container">
-          <div class="columns is-vcentered">
-            <div class="column is-one-quarter has-text-centered">
-              <h1 class="title has-text-success-dark pb-3"><%= selectedTrip.countries %></h1>
-              <figure class="image is-96x96 is-inline-block">
-                <img src="<%= country.flag.medium %>" alt="flag" />
-              </figure>
-              <div class="box has-background-black mt-5">
-                <p><strong>Capital:</strong> <%= country.capital %></p>
-                <p><strong>Population:</strong> <%= country.population %></p>
-              </div>
+      <div class="container">
+        <div class="columns is-vcentered">
+          <div class="column is-one-quarter has-text-centered">
+            <h1 class="title has-text-success-dark pb-3">
+              <%= selectedTrip.countries %>
+            </h1>
+            <figure class="image is-96x96 is-inline-block">
+              <img src="<%= country.flag.medium %>" alt="flag" />
+            </figure>
+            <div class="box has-background-black mt-5">
+              <p><strong>Capital:</strong> <%= country.capital %></p>
+              <p><strong>Population:</strong> <%= country.population %></p>
             </div>
-            <div class="column is-half">
-              <div class="box has-background-primary-dark has-text-white has-text-centered">
-                <h3><strong>Dates: </strong></h3>
-                <p><%= selectedTrip.startDate.toDateString() %></p>
-                <p><%= selectedTrip.endDate.toDateString() %></p>
-              </div>
-              <div class="box has-background-primary-dark has-text-white has-text-centered">
-                <h3><strong>Passengers: </strong></h3>
-                <p><%= selectedTrip.passengers %></p>
-              </div>
-              <div class="box has-background-primary-dark has-text-white">
-                <h3 class="has-text-centered"><strong>Todos:</strong></h3>
-                <ul class="has-text-centered">
-                  <% selectedTrip.todos.forEach(todo => { %>
-                    <li>Task: <%= todo.name %>, Complete: <%= todo.isComplete %></li>
-                  <% }) %>
-                </ul>
-                <div id="todos"></div>
-              </div>
-              <div class="buttons is-centered mt-4">
-                <form action="/trips/<%= selectedTrip._id %>?_method=DELETE" method="POST">
-                  <button class="button is-danger is-outlined">Delete</button>
-                </form>
-                <a class="button is-success is-outlined" href="/trips/<%= selectedTrip._id %>/edit">Update Trip</a>
-              </div>
+          </div>
+          <div class="column is-half">
+            <div
+              class="box has-background-primary-dark has-text-white has-text-centered"
+            >
+              <h3><strong>Dates: </strong></h3>
+              <p><%= selectedTrip.startDate.toDateString() %></p>
+              <p><%= selectedTrip.endDate.toDateString() %></p>
+            </div>
+            <div
+              class="box has-background-primary-dark has-text-white has-text-centered"
+            >
+              <h3><strong>Passengers: </strong></h3>
+              <p><%= selectedTrip.passengers %></p>
+            </div>
+            <div class="box has-background-primary-dark has-text-white">
+              <h3 class="has-text-centered"><strong>Todos:</strong></h3>
+              <ul class="has-text-centered">
+                <% selectedTrip.todos.forEach(todo => { %>
+                <li>
+                  Task: <%= todo.name %>, Complete: <%= todo.isComplete %>
+                </li>
+                <% }) %>
+              </ul>
+              <div id="todos"></div>
+            </div>
+            <div class="buttons is-centered mt-4">
+              <form
+                action="/trips/<%= selectedTrip._id %>?_method=DELETE"
+                method="POST"
+              >
+                <button class="button is-danger is-outlined">Delete</button>
+              </form>
+              <a
+                class="button is-success is-outlined"
+                href="/trips/<%= selectedTrip._id %>/edit"
+                >Update Trip</a
+              >
             </div>
           </div>
         </div>
+      </div>
       <% }) %>
     </section>
   </body>
 </html>
-
-
