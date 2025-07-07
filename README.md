@@ -80,5 +80,6 @@ Basic Installation
 
 - [ ] Create an itinerary page which hold a day to day planner for the trip.
 - [ ] Countdown Clock on the View Trips page.
+- [ ] TODO UX for updating todo list.
 - [ ] Current weather forecast for the selected destination.
 - [ ] Reccommendation page, such as a packing list, things to do, etc.
