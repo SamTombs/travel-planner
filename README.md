@@ -36,9 +36,15 @@ I wanted to keep the concept simple from the start — just a clean, easy-to-use
 - MongoDB
 - Mongoose
 
+## Third Party Api
+
+To enhance the functionality of the app, I integrated a third-party API from countryapi.IO that provides country data. This API allows me to fetch details like country names, codes, and flags dynamically, which is especially useful for auto-filling important information when viewing the trip. I used the native fetch function to make the API call and processed the response using Object.keys to extract and display the relevant information.
+
+<img width="500" alt="countryAPI" src="https://github.com/user-attachments/assets/0582c6fd-097f-490f-a0fb-ba8d804bd433"/>
+
 ## Installation
 
-- Basic Installation
+Basic Installation
    ```zsh
    git clone https://github.com/SamTombs/travel-planner.git
    cd travel-planner
@@ -62,6 +68,13 @@ I wanted to keep the concept simple from the start — just a clean, easy-to-use
    ```zsh
    nodemon
    ```
+
+## Future Enhancements
+
+- There is a myriad of further enhancements I would like to make.
+- UX and UI: I want it to be easier to update and create todos.
+- CSS: Introduce new font styles, button improvements and mobile nav-burger responsiveness
+
 
 ## Stretch Goals
 
