@@ -1,6 +1,3 @@
-// Log to console to confirm the script is loading
-console.log("TEST");
-
 // Get the container div where new todo input fields will be added
 const todoList = document.getElementById("todos");
 

@@ -14,10 +14,6 @@ router.get('/sign-up', (req, res) => {
     };
 })
 
-router.get('/sign-in', (req, res) => {
-    res.render('auth/sign-in.ejs');
-})
-
 router.get('/sign-out', (req, res) => {
     req.session.destroy();
     res.redirect('/');
@@ -87,7 +83,6 @@ router.post("/sign-in", async (req, res) => {
       // Avoid storing the password, even in hashed format, in the session
       // If there is other data you want to save to `req.session.user`, do so here!
       req.session.user = {
-        email: userInDatabase.email,
         username: userInDatabase.username,
         _id: userInDatabase._id,
         loginTime: new Date().toISOString(),
