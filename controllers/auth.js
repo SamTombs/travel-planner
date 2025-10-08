@@ -3,15 +3,16 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 
 const passUserToView = require("../middleware/pass-user-to-view");
+const { validateSignUp, validateSignIn } = require("../middleware/validation");
 
 const User = require('../models/user');
 
 router.use(passUserToView);
 
 router.get('/sign-up', (req, res) => {
-    res.render('auth/sign-up.ejs'), {
+    res.render('auth/sign-up.ejs', {
         user: req.user || null,
-    };
+    });
 })
 
 router.get('/sign-out', (req, res) => {
@@ -19,15 +20,14 @@ router.get('/sign-out', (req, res) => {
     res.redirect('/');
 });
 
-router.post('/sign-up', async (req, res) => {
+router.post('/sign-up', validateSignUp, async (req, res) => {
     try { 
         const userInDatabase = await User.findOne({ username: req.body.username });
-        console.log(User)
-        if(userInDatabase)
-            return res.send ('Username already taken');
-
-        if (req.body.password !== req.body.confirmPassword) {
-            return res.send('Password does not match');
+        if(userInDatabase) {
+            return res.render('auth/sign-up.ejs', {
+                errors: ['Username already taken'],
+                user: req.user || null,
+            });
         }
 
         const hashedPassword = bcrypt.hashSync(req.body.password, 10);
@@ -54,12 +54,15 @@ router.get("/sign-in", (req, res) => {
   });
 });
 
-router.post("/sign-in", async (req, res) => {
+router.post("/sign-in", validateSignIn, async (req, res) => {
   try {
     //check user exists in db
     const userInDatabase = await User.findOne({ username: req.body.username });
     if (!userInDatabase) {
-      return res.send("Login failed. Please try again.");
+      return res.render("auth/sign-in.ejs", {
+        errors: ["Invalid username or password"],
+        user: req.user || null,
+      });
     }
 
     //check if the password is correct
@@ -69,7 +72,10 @@ router.post("/sign-in", async (req, res) => {
     );
 
     if (!validPassword) {
-      return res.send("Login failed. Please try again.");
+      return res.render("auth/sign-in.ejs", {
+        errors: ["Invalid username or password"],
+        user: req.user || null,
+      });
     }
 
     // Regenerate session to prevent session fixation attacks

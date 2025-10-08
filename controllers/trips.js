@@ -2,10 +2,9 @@ const express = require("express");
 const router = express.Router({ mergeParams: true });
 const Trip = require("../models/trips");
 
-const url =
-  "https://countryapi.io/api/all?apikey=4lThQv6dCro8bAsbgAB6Eekb85e5GHnfsjv9uj2w";
+const apiKey = process.env.COUNTRY_API_KEY;
 
-const apiKey = process.env.API_KEY;
+const url = `https://countryapi.io/api/all?apikey=${apiKey}`;
 
 router.get("/", async (req, res) => {
   try {
